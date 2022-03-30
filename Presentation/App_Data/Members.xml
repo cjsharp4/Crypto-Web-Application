@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Users>
+  <User>
+    <UserName>rylee</UserName>
+    <Password>testy</Password>
+  </User>
+  <User>
+    <UserName>kathy</UserName>
+    <Password>testy</Password>
+  </User>
+  <Users>
+    <UserName>amy</UserName>
+    <Password>testy</Password>
+  </Users>
+  <Users>
+    <UserName>doug</UserName>
+    <Password>testy</Password>
+  </Users>
+  <Users>
+    <UserName>bob</UserName>
+    <Password>testy</Password>
+  </Users>
+  <Users>
+    <UserName>chad</UserName>
+    <Password>test</Password>
+  </Users>
+</Users>
