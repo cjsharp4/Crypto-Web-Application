@@ -85,6 +85,30 @@ p {
             <br />
             <br />
             <br />
+            Web service TryIt:<br />
+            Crypto Prices (RESTful service)<br />
+            <br />
+            Given an amount of USD and a cryptocurrency name, this service returns how much of that cryptocurrency you could buy<br />
+            <br />
+            Enter a cryptocurrency you would like to invest in (example: bitcoin)<br />
+            <br />
+            <asp:TextBox ID="TextBox2" runat="server" Width="174px"></asp:TextBox>
+            <br />
+            <br />
+            Next, enter an amount of USD that you would like to invest into the specified cryptocurrency above (2000.00)<br />
+            <br />
+            <asp:TextBox ID="TextBox3" runat="server" Width="170px"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="Get Crypto Conversion" Width="173px" />
+            <br />
+            <br />
+            <asp:Label ID="Label5" runat="server" Text="--"></asp:Label>
+            <br />
+            <br />
+            <asp:Label ID="Label6" runat="server" Text="--"></asp:Label>
+            <br />
+            <br />
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Sign out" Width="100px" />
             <br />
             <br />

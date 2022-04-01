@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Text.Json;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -52,6 +55,58 @@ namespace Presentation.Members
             string[] temps = myProxy.ExchangeRates(usdAmount); //store weather service array locally for display purposes
             Label4.Text = String.Join(" | ", temps); //turn array into a string to display on the TryIt page
             myProxy.Close();
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            // Obtain the runtime value of the Text input argument
+            string text = TextBox2.Text;
+
+            text = text.ToLower();
+
+            string apiUrl = "https://api.coingecko.com/api/v3/simple/price?ids=";
+            apiUrl += text;
+            apiUrl += "&vs_currencies=usd";
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(apiUrl);
+            WebResponse response = request.GetResponse();
+            var reader = new StreamReader(response.GetResponseStream());
+            string responseText = reader.ReadToEnd();
+
+
+            JsonDocument jdoc = JsonDocument.Parse(responseText);
+
+            JsonElement root = jdoc.RootElement;
+
+            string finalPrice = "-1";
+
+            //catch error if invalid crypto is entered, which would invalidate the api call address
+            try
+            {
+                JsonElement price = root.GetProperty(text);
+                finalPrice = price.GetProperty("usd").ToString();
+                Label5.Text = "The cost of " + text + " is currently: $" + finalPrice;
+            }
+            catch (System.Collections.Generic.KeyNotFoundException)
+            {
+                Label5.Text = "ERROR"; 
+            }
+
+            if(Label5.Text != "ERROR")
+            {
+
+                //set values to be double so that you can get a rate conversion using division
+                double getConversionRate = Convert.ToDouble(finalPrice);
+                double toInvest = Convert.ToDouble(TextBox3.Text);
+                double getCryptoRate = toInvest / getConversionRate; 
+
+                //truncate answer to get clean value with 2 decimal places
+                double rateTruncated = Math.Truncate(getCryptoRate * 100) / 100;
+
+                Label6.Text = "You could buy " + string.Format("{0:N2}", rateTruncated) + " " + text + "!";
+
+            }
+
         }
     }
 }
