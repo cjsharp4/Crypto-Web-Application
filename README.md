@@ -4,7 +4,7 @@ Final Project for my Distributed Systems and Architecture class at ASU.
 
 The focus of this project was to learn how implement RESTful and SOAP services that we created earlier in the semester into a web application. Some of the webservices were made completed from scratch and others were created by wrapping other APIs in code that gave the API new functionality (example: used coingeeko API to get cryptocurrency prices and wrote new code to get a conversion rate of USD to any desired cryptocurrency). The UI of the web application is rough, but was not the main focus of this project. Other features such as user account registration, sign in, cookies, user role authentication using Forms Authentication, global handlers, etc were also implemented.
 
-We orignally had our web application hosted on AWS EC2 instances provided by ASU. I have reverted the application to host the web services on localhost when starting up the program.
+We orignally had our web application hosted on AWS EC2 instances provided by ASU. I have reverted the application to host the web services on localhost when starting up the program. This seems to have occured due to new security requirements (HTTPS) from the ASU service repository.
 
 
 Note:
